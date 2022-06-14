@@ -13,5 +13,4 @@ int main(int argc, char **argv) {
         parametros[i - 1] = (char*) malloc(sizeof(char) * strlen(argv[i]));
         strcpy(parametros[i - 1], argv[i]);
     }
-
 }

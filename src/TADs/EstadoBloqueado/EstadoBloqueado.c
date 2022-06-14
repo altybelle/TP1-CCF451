@@ -3,13 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insere_eb(EstadoBloqueado** estado, int num) {
+void insere_eb(EstadoBloqueado** estado, Processo proc) {
     EstadoBloqueado *aux = NULL;
     EstadoBloqueado *novo = NULL;
 
     novo = (EstadoBloqueado*) malloc(sizeof(EstadoBloqueado));
 
-    novo->valor = num;
+    novo->proc = proc;
     novo->proximo = NULL;
     
     if (*estado == NULL) { 
@@ -37,9 +37,9 @@ EstadoBloqueado *remover_eb(EstadoBloqueado** estado) {
 }
 
 void imprimir_eb(EstadoBloqueado* estado) {
-    printf("Estados Prontos\n");
+    printf("Lista de Estados Bloqueados: \n");
     while (estado) {
-        printf("%d ", estado->valor);
+        imprime_processo(&estado->proc);
         estado = estado->proximo;
     }
 

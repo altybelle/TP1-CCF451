@@ -3,13 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insere_ep(EstadoPronto** estado, int num) {
+void insere_ep(EstadoPronto** estado, Processo proc) {
     EstadoPronto *aux = NULL;
     EstadoPronto *novo = NULL;
 
     novo = (EstadoPronto*) malloc(sizeof(EstadoPronto));
 
-    novo->valor = num;
+    novo->proc = proc;
     novo->proximo = NULL;
     
     if (*estado == NULL) { 
@@ -23,24 +23,24 @@ void insere_ep(EstadoPronto** estado, int num) {
     }
 }
 
-void insere_prioridade_ep(EstadoPronto** estado, int num) {
+void insere_prioridade_ep(EstadoPronto** estado, Processo proc) {
     EstadoPronto *aux = NULL;
     EstadoPronto *novo = NULL;
 
     novo = (EstadoPronto*) malloc(sizeof(EstadoPronto));
 
-    novo->valor = num;
+    novo->proc = proc;
     novo->proximo = NULL;
     if (*estado == NULL) {
         *estado = novo;
     } else {
-        if (num > 255) { /* Condição arbitrária para prioridade */
-            if ((*estado)->valor < 256) { /* Checa se é a primeira prioridade */
+        if (proc.prioridade > 255) { /* Condição arbitrária para prioridade */
+            if ((*estado)->proc.prioridade < 256) { /* Checa se é a primeira prioridade */
                 novo->proximo = *estado;
                 *estado = novo;
             } else {
                 aux = *estado;
-                while (aux->proximo && aux->proximo->valor > 255)
+                while (aux->proximo && aux->proximo->proc.prioridade > 255)
                     aux = aux->proximo;
                 novo->proximo = aux->proximo;
                 aux->proximo = novo;
@@ -69,9 +69,9 @@ EstadoPronto *remover_ep(EstadoPronto** estado) {
 
 
 void imprimir_ep(EstadoPronto* estado) {
-    printf("Estados Prontos\n");
+    printf("Lista de Estados Prontos: \n");
     while (estado) {
-        printf("%d ", estado->valor);
+        imprime_processo(&estado->proc);
         estado = estado->proximo;
     }
 
