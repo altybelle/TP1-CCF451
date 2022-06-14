@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insere_eb(EstadoBloqueado** estado, Processo proc) {
+void inserir_eb(EstadoBloqueado** estado, Processo proc) {
     EstadoBloqueado *aux = NULL;
     EstadoBloqueado *novo = NULL;
 
@@ -36,7 +36,7 @@ EstadoBloqueado *remover_eb(EstadoBloqueado** estado) {
     return aux;
 }
 
-void imprimir_eb(EstadoBloqueado* estado) {
+void imprimir_ebs(EstadoBloqueado* estado) {
     printf("Lista de Estados Bloqueados: \n");
     while (estado) {
         imprime_processo(&estado->proc);

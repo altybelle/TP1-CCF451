@@ -8,9 +8,9 @@ typedef struct EstadoPronto {
     struct EstadoPronto *proximo;
 } EstadoPronto;
 
-void insere_ep(EstadoPronto**, Processo); /* Insere na fila */
-void insere_prioridade_ep(EstadoPronto**, Processo); /* Insere com prioridade na fila */
+void inserir_ep(EstadoPronto**, Processo); /* Insere na fila */
+void inserir_prioridade_ep(EstadoPronto**, Processo); /* Insere com prioridade na fila */
 EstadoPronto *remover_ep(EstadoPronto**); /* Remove item da fila */
-void imprimir_ep(EstadoPronto*); /* Imprime a fila */ 
+void imprimir_eps(EstadoPronto*); /* Imprime a fila */ 
 
 #endif // ESTADO_PRONTO_H_

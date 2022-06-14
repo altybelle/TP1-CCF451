@@ -1,6 +1,6 @@
 #include "Processo.h"
 
-void imprime_processo(Processo *proc) {
+void imprimir_processo(Processo *proc) {
     puts("=============== Processo ===============");
     printf("PID: %d\n", proc->pid);
     printf("PID do Pai: %d\n", proc->pid_pai);

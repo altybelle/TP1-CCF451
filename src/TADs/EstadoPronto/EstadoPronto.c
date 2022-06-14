@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insere_ep(EstadoPronto** estado, Processo proc) {
+void inserir_ep(EstadoPronto** estado, Processo proc) {
     EstadoPronto *aux = NULL;
     EstadoPronto *novo = NULL;
 
@@ -23,7 +23,7 @@ void insere_ep(EstadoPronto** estado, Processo proc) {
     }
 }
 
-void insere_prioridade_ep(EstadoPronto** estado, Processo proc) {
+void inserir_prioridade_ep(EstadoPronto** estado, Processo proc) {
     EstadoPronto *aux = NULL;
     EstadoPronto *novo = NULL;
 
@@ -68,7 +68,7 @@ EstadoPronto *remover_ep(EstadoPronto** estado) {
 }
 
 
-void imprimir_ep(EstadoPronto* estado) {
+void imprimir_eps(EstadoPronto* estado) {
     printf("Lista de Estados Prontos: \n");
     while (estado) {
         imprime_processo(&estado->proc);

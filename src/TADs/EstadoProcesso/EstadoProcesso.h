@@ -11,6 +11,6 @@ typedef struct EstadoProcesso {
     Programa programa[20];
 } EstadoProcesso;
 
-void imprimir_eproc(EstadoProcesso*);
+void imprimir_eprocs(EstadoProcesso*);
 
 #endif // ESTADO_PROCESSO_H_

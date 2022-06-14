@@ -13,6 +13,6 @@ typedef struct Processo {
     EstadoProcesso estado_processo;
 } Processo;
 
-void imprime_processo(Processo*);
+void imprimir_processo(Processo*);
 
 #endif // PROCESSO_H

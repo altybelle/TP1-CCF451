@@ -8,8 +8,8 @@ typedef struct EstadoBloqueado {
     struct EstadoBloqueado *proximo;
 } EstadoBloqueado;
 
-void insere_ep(EstadoBloqueado**, Processo); /* Insere na fila */
-EstadoBloqueado *remover_ep(EstadoBloqueado**); /* Remove item da fila */
-void imprimir_eb(EstadoBloqueado*); /* Imprime a fila */ 
+void inserir_eb(EstadoBloqueado**, Processo); /* Insere na fila */
+EstadoBloqueado *remover_eb(EstadoBloqueado**); /* Remove item da fila */
+void imprimir_ebs(EstadoBloqueado*); /* Imprime a fila */ 
 
 #endif // ESTADO_BLOQUEADO_H_

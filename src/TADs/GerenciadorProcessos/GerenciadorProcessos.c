@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void imprime_CPU(CPU *cpu) {
+void imprimir_CPU(CPU *cpu) {
     int i;
     puts("=============== CPU INFO ===============");
     printf("Programa na CPU: ");

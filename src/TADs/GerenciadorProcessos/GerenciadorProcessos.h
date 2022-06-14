@@ -27,6 +27,6 @@ typedef struct EstadoEmExecucao {
 
 void exec();
 void exec2();
-void imprime_CPU(CPU*);
+void imprimir_CPU(CPU*);
 
 #endif // GERENCIADOR_PROCESSOS_H_

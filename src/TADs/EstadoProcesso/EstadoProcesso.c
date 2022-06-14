@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void imprimir_eproc(EstadoProcesso *eproc) {
+void imprimir_eprocs(EstadoProcesso *eproc) {
     int i;
     printf("Quantidade de variaveis inteiras: %d\n", eproc->quantidade_inteiros);
     if (eproc->tamanho) {
