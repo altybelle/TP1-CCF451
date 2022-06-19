@@ -5,15 +5,16 @@
 //   int fd[2],fd_s[2]; 
 //   pid_t pid;
 
-//   char str_enviada[BUFFER],str_recebida[BUFFER], Instrucao[20];
-//   FILE *ArquivoPrograma;
-//   int Quant_Instrucoes=0;
-//   Programa Prog;
+//   char sent[BUFFER], received[BUFFER];
+//   Instructions inst;
+//   FILE *f;
+//   int inst_amount = 0;
+//   Program prog;
 //   if(pipe(fd) < 0){ 
 //     perror("pipe");
 //     return -1; 
 //   }
-//   if((pid = fork())<0){ 
+//   if((pid = fork()) < 0){ 
 //     perror("fork");
 //     exit(1);
 //   }
@@ -56,34 +57,34 @@
 //     }
 //     Inicializa(&estadoexec, &estadopronto, &estadobloqueado, &pcbTable, &cpu, &time);
 
-//     ArquivoPrograma = fopen("./Arquivos_Entrada/Programa.txt", "r");
+//     f = fopen("./Arquivos_Entrada/Program.txt", "r");
 
-//     if (ArquivoPrograma == NULL) {
+//     if (f == NULL) {
 //         printf("Erro, nao foi possivel abrir o arquivo ArquivoProgramaIni.txt\n");
 //     } else {
-//         while((fgets(Instrucao, sizeof(Instrucao), ArquivoPrograma)) != NULL ){
+//         while((fgets(Instrucao, sizeof(Instrucao), f)) != NULL ){
 //                 AdicionaProgramaFila(&Prog, Instrucao);
-//                 Quant_Instrucoes++;
+//                 inst_amount++;
 //               }
-//       fclose(ArquivoPrograma);
+//       fclose(f);
 //     }
 
-//     Prog.Tam = Quant_Instrucoes;
+//     Prog.Tam = inst_amount;
 
-//     Processo processo = criarPrimeiroSimulado(&Prog, &time, Quant_Instrucoes, getpid());
+//     Processo processo = criarPrimeiroSimulado(&Prog, &time, inst_amount, getpid());
 
 //     close(fd[1]);
 
-//     read(fd[0], str_recebida, sizeof(str_recebida));
-//     printf("String recebida pelo Gerenciador de PID %i enviada pelo Controle: '%s'\n\n", getpid(), str_recebida);
+//     read(fd[0],  received, sizeof( received));
+//     printf("String recebida pelo Gerenciador de PID %i enviada pelo Controle: '%s'\n\n", getpid(),  received);
 
 //     EnfileiraPronto(&estadopronto, &processo);
 
 //     InserePcbTable(&pcbTable, processo);
 
 //     processo = colocarProcessoCPU(&cpu, &estadopronto);
-//     for (unsigned int j = 0; j < strlen(str_recebida); j++) {
-//         switch (str_recebida[j]) {
+//     for (unsigned int j = 0; j < strlen( received); j++) {
+//         switch ( received[j]) {
 //             case 'I':
 //                 ImprimeSistemaCompleto(&cpu,&pcbTable,&estadobloqueado,&estadopronto);
 //                 break;
@@ -138,7 +139,7 @@
 //     }while(comando != 'M');
 // }
 
-// int RetiraProgramaFila(Programa *prog,char *instrucao,int indice){  
+// int RetiraProgramaFila(Program *prog,char *instrucao,int indice){  
 //   if(EstaVazia(*prog)){
 //     printf("\n\tErro! Fila de programa Vazia!\n");
 //     return -1;

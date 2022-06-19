@@ -6,4 +6,6 @@ struct Time {
     int created_processes_amount;
 };
 
+void print_average_cycle_time(struct Time*);
+
 #endif // _TIME_H_

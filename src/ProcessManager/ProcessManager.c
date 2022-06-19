@@ -205,3 +205,12 @@ void exec2(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, struc
         *proc = swap_process_CPU(cpu,rs);
     }
 }
+
+void print_whole_system(struct CPU* cpu, struct ReadyState* rs, struct BlockedState* bs, struct PCB* pcb) {
+    puts("=============== SYSTEM INFO ===============");
+    print_CPU(cpu);
+    print_ready_state(rs);
+    print_blocked_state(bs);
+    print_PCB(pcb);
+    puts("===========================================");
+}
