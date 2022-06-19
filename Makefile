@@ -1,0 +1,2 @@
+compile: src/main.c src/BlockedState/BlockedState.c src/Control/Control.c src/CPU/CPU.c src/InstructionRunner/InstructionRunner.c src/PCB/PCB.c src/Process/Process.c src/ProcessManager/ProcessManager.c src/Program/Program.c src/ReadyState/ReadyState.c src/Time/Time.c
+	gcc -o TP1_SO src/main.c src/BlockedState/BlockedState.c src/Control/Control.c src/CPU/CPU.c src/InstructionRunner/InstructionRunner.c src/PCB/PCB.c src/Process/Process.c src/ProcessManager/ProcessManager.c src/Program/Program.c src/ReadyState/ReadyState.c src/Time/Time.c

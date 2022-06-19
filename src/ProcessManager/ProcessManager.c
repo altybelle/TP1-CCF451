@@ -1,4 +1,11 @@
 #include "ProcessManager.h"
+#include "../InstructionRunner/InstructionRunner.h"
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
 void initialize(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, 
     struct BlockedState *bs, struct PCB* pcb, struct Time* time) {
@@ -112,7 +119,7 @@ struct Process swap_process_CPU(struct CPU* cpu, struct ReadyState* rs) {
     return proc;
 }
 
-void exec(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, struct BlockedState* bs, struct PCB* pcb, struct Process* proc, struct Time* time) {
+void execute(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, struct BlockedState* bs, struct PCB* pcb, struct Process* proc, struct Time* time) {
 
     run_instructions(cpu, proc, exec, rs, bs, pcb, time);
 
@@ -157,7 +164,7 @@ void exec(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, struct
     }
 }
 
-void exec2(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, struct BlockedState* bs, struct PCB* pcb, struct Process* proc, struct Time* time) {
+void execute2(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, struct BlockedState* bs, struct PCB* pcb, struct Process* proc, struct Time* time) {
 
     run_instructions(cpu, proc, exec, rs, bs, pcb, time);
 

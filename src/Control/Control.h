@@ -1,12 +1,8 @@
-// #ifndef _CONTROL_H_
-// #define _CONTROL_H_
+#ifndef _CONTROL_H_
+#define _CONTROL_H_
 
-// #include "../Process_Manager/ProcessManager.h"
+int execute_control();
+void read_terminal(char *sent);
+int read_file(char *sent);
 
-// int execute_control();
-
-// void ler_terminal(char *str_enviada);
-// int ler_arquivo(char *str_enviada);
-
-
-// #endif //P_CONTROLE_H
+#endif // _CONTROL_H_

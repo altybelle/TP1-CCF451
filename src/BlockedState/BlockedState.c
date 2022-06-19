@@ -33,7 +33,7 @@ int dequeue_blocked_state(struct BlockedState* bs, struct Process* proc) {
     return 0;
 }
 
-void print_ready_state(struct BlockedState* bs) {
+void print_blocked_state(struct BlockedState* bs) {
     int i;
     printf("=============== Blocked State queue ===============");
     for (i = bs->front; i < bs->back; i++) {

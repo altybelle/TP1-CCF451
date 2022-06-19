@@ -15,7 +15,7 @@ int is_program_empty(struct Program *prog) {
 void enqueue_program(struct Program *prog, char *instructions) {
     if (!((prog->back % PROGRAM_MAX + 1) == prog->front)) {
         prog->back = prog->back % PROGRAM_MAX + 1;
-        strcpy(prog->inst, instructions);
+        strcpy(prog->inst[prog->back], instructions);
         return;
     }
     puts("Error: the program's queue is already full.");
@@ -28,6 +28,6 @@ int dequeue_program(struct Program *prog, char *instructions, int index) {
     if (is_empty) return -1;
     if (index_surpass_back) return 0;
 
-    strcpy(prog->inst, instructions);
+    strcpy(instructions, prog->inst[index]);
     return 1;
 }
