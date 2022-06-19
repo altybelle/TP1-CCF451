@@ -7,8 +7,8 @@ struct CPU {
   struct Program prog;
   int current_program_count;
   int *integer_value;
-  int allocated_integers;
-  int integer_count;
+  int allocated_int_amount;
+  int int_amount;
   int time_slice;
   int used_time_slices;
 };

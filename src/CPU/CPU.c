@@ -10,9 +10,9 @@ void print_CPU(struct CPU* cpu) {
         printf("%s\t", cpu->prog.inst[i]);
     printf("\n");
     printf("Current program counter: %d\n", cpu->current_program_count);
-    printf("Integer amount: %d\n", cpu->integer_count);
-    if (cpu->allocated_integers) {
-        for (i = 0; i < cpu->integer_count; i++)
+    printf("Integer amount: %d\n", cpu->int_amount);
+    if (cpu->allocated_int_amount) {
+        for (i = 0; i < cpu->int_amount; i++)
             printf("Integer %d value: %d\n", i, cpu->integer_value[i]);
     }
     printf("Available time slice: %d\n", cpu->time_slice);
