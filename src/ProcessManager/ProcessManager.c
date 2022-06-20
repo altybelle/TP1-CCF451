@@ -9,7 +9,7 @@
 
 void initialize(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, 
     struct BlockedState *bs, struct PCB* pcb, struct Time* time) {
-    exec->iPCB = 0;
+    (*exec).iPCB = 0;
 
     initialize_blocked_state(bs);
     initialize_PCB(pcb);
@@ -41,7 +41,7 @@ struct Process create_first_process(struct Program *prog, struct Time *time, int
     proc.startup_time = (*time).time;
     
     for (i = 0; i < instruction_amount; i++) {
-        strcpy(proc.process_state.prog[i], prog->inst[i]);
+        strcpy(proc.process_state.prog[i], (*prog).inst[i]);
     }
 
     strcpy(proc.state, "READY");
@@ -142,13 +142,13 @@ void execute(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, str
     if ((*cpu).allocated_int_amount)
         (*proc).process_state.integer = (*cpu).integer_value;
 
-    pcb->procs[exec->iPCB] = *proc;
+    (*pcb).procs[(*exec).iPCB] = *proc;
 
     if ((*cpu).used_time_slices >= (*cpu).time_slice) {
         if ((*proc).priority < 3 && (*proc).priority >= 0) {
-            printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, pcb->procs[exec->iPCB].priority + 1);
+            printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, (*pcb).procs[(*exec).iPCB].priority + 1);
             (*proc).priority++;
-            pcb->procs[exec->iPCB].priority++;
+            (*pcb).procs[(*exec).iPCB].priority++;
         }
 
         enqueue_blocked_state(bs, proc);
@@ -179,21 +179,21 @@ void execute2(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, st
 
     if((*cpu).allocated_int_amount)
         (*proc).process_state.integer = (*cpu).integer_value;
-    pcb->procs[exec->iPCB] = *proc;
+    (*pcb).procs[(*exec).iPCB] = *proc;
 
     if ((*cpu).used_time_slices >= (*cpu).time_slice) {
         if ((*proc).priority > 0 && (*proc).priority <= 3) {
-            printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, pcb->procs[exec->iPCB].priority + 1);
+            printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, (*pcb).procs[(*exec).iPCB].priority + 1);
             (*proc).priority++;
-            pcb->procs[exec->iPCB].priority++;
+            (*pcb).procs[(*exec).iPCB].priority++;
         }
         enqueue_blocked_state(bs, proc);
         *proc = swap_process_CPU(cpu,rs);
     } else if ((*cpu).used_time_slices < (*cpu).time_slice) {
         if ((*proc).priority > 0 && (*proc).priority <= 3){
-            printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, pcb->procs[exec->iPCB].priority + 1);
+            printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, (*pcb).procs[(*exec).iPCB].priority + 1);
             (*proc).priority--;
-            pcb->procs[exec->iPCB].priority--;
+            (*pcb).procs[(*exec).iPCB].priority--;
         }
     } else if (!strcmp((*proc).state,"BLOCKED")) {
         *proc = swap_process_CPU(cpu,rs);

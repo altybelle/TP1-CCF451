@@ -16,8 +16,8 @@ void enqueue_blocked_state(struct BlockedState* bs, struct Process* proc) {
     if (!(((*bs).back % PROGRAM_MAX + 1) == (*bs).front)) {
         (*bs).procs[(*bs).back] = *proc;
         (*bs).back = (*bs).back % PROGRAM_MAX + 1;
-        strcpy(proc->state, "BLOCKED");
-        printf("The process was successfully added to the Blocked State queue. PID: %d.\n", proc->pid);
+        strcpy((*proc).state, "BLOCKED");
+        printf("The process was successfully added to the Blocked State queue. PID: %d.\n", (*proc).pid);
         return;
     }
     puts("Error: The Blocked State queue is already full.");
