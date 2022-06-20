@@ -78,7 +78,7 @@ void run_instructions(struct CPU* cpu, struct Process* proc, struct ExecState* e
             token_retrieve_1(inst, tk_s, token, temp, &i);
             x = atoi(temp);
             if (!(*cpu).allocated_int_amount) {
-                (*cpu).integer_value = (int*) malloc(sizeof(int) * (*cpu).int_amount);
+                (*cpu).integer_value = (int*) calloc((*cpu).int_amount, sizeof(int));
                 (*cpu).allocated_int_amount++;
                 (*cpu).integer_value[x] = 0;
             } else {

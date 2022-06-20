@@ -53,21 +53,21 @@ struct Process create_process(struct Process *parent_proc, struct Time *time, in
     struct Process proc;
 
     proc.pid = rand() % 10000;
-    proc.parent_pid = parent_proc->pid;
-    proc.priority = parent_proc->priority;
+    proc.parent_pid = (*parent_proc).pid;
+    proc.priority = (*parent_proc).priority;
     proc.cpu_quota = 0;
 
-    if (parent_proc->process_state.allocated_int_amount)
-        proc.process_state.integer = (int *) malloc (sizeof(int) * parent_proc->process_state.int_amount);
+    if ((*parent_proc).process_state.allocated_int_amount)
+        proc.process_state.integer = (int*) calloc((*parent_proc).process_state.int_amount, sizeof(int));
 
-    proc.process_state.size = parent_proc->process_state.size;
-    proc.process_state.int_amount = parent_proc->process_state.int_amount;
-    proc.process_state.allocated_int_amount = parent_proc->process_state.allocated_int_amount;
+    proc.process_state.size = (*parent_proc).process_state.size;
+    proc.process_state.int_amount = (*parent_proc).process_state.int_amount;
+    proc.process_state.allocated_int_amount = (*parent_proc).process_state.allocated_int_amount;
     proc.process_state.count = instruction_number;
     proc.startup_time = time->time;
 
-    for (int i = 0; i < parent_proc->process_state.size; i++) {
-        strcpy(proc.process_state.prog[i], parent_proc->process_state.prog[i]);
+    for (int i = 0; i < (*parent_proc).process_state.size; i++) {
+        strcpy(proc.process_state.prog[i], (*parent_proc).process_state.prog[i]);
     }
 
     strcpy(proc.state, "READY");
