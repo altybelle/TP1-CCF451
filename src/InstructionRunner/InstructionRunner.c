@@ -42,14 +42,14 @@ void run_instructions(struct CPU* cpu, struct Process* proc, struct ExecState* e
     
     strcpy(inst, "");
 
-    int program_end = dequeue_program(&cpu->prog, inst, cpu->current_program_count);
+    int program_end = dequeue_program(&(*cpu).prog, inst, (*cpu).current_program_count);
     if (program_end == -1) {
-        dequeue_PCB(pcb, proc, exec->iPCB);
+        dequeue_PCB(pcb, proc, (*exec).iPCB);
         *proc = swap_process_CPU(cpu, rs);
         return;
     } else if (program_end == 0) {
-        printf("Ended process. PID: %d", pcb->procs[exec->iPCB].pid);
-        dequeue_PCB(pcb, proc, exec->iPCB);
+        printf("Ended process. PID: %d", (*pcb).procs[(*exec).iPCB].pid);
+        dequeue_PCB(pcb, proc, (*exec).iPCB);
         *proc = swap_process_CPU(cpu, rs);
         return;
     }
@@ -65,47 +65,47 @@ void run_instructions(struct CPU* cpu, struct Process* proc, struct ExecState* e
             token_retrieve_2(inst, tk_s, token, temp, temp2, &i);
             x = atoi(temp);
             y = atoi(temp2);
-            cpu->integer_value[x] += y;
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).integer_value[x] += y;
+            (*cpu).current_program_count++;
+            (*time).time++;
         break;
         case 'B':
             enqueue_blocked_state(bs, proc);
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).current_program_count++;
+            (*time).time++;
         break;
         case 'D':
             token_retrieve_1(inst, tk_s, token, temp, &i);
             x = atoi(temp);
-            if (!cpu->allocated_int_amount) {
-                cpu->integer_value = (int*) malloc(sizeof(int) * cpu->int_amount);
-                cpu->allocated_int_amount++;
-                cpu->integer_value[x] = 0;
+            if (!(*cpu).allocated_int_amount) {
+                (*cpu).integer_value = (int*) malloc(sizeof(int) * (*cpu).int_amount);
+                (*cpu).allocated_int_amount++;
+                (*cpu).integer_value[x] = 0;
             } else {
-                cpu->integer_value[x] = 0;
+                (*cpu).integer_value[x] = 0;
             }
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).current_program_count++;
+            (*time).time++;
         break;
         case 'F':
             token_retrieve_1(inst, tk_s, token, temp, &i);
             x = atoi(temp);
             new_proc = create_process(proc, time, x);
-            if (proc->process_state.allocated_int_amount)
-                for (int it = 0; it < proc->process_state.int_amount; it++) 
-                    proc->process_state.integer[it] = cpu->integer_value[it];
+            if ((*proc).process_state.allocated_int_amount)
+                for (int it = 0; it < (*proc).process_state.int_amount; it++) 
+                    (*proc).process_state.integer[it] = (*cpu).integer_value[it];
             enqueue_ready_state(rs, &new_proc);
             enqueue_PCB(pcb, &new_proc);
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).current_program_count++;
+            (*time).time++;
 
         break;
         case 'N':
             token_retrieve_1(inst, tk_s, token, temp, &i);
             x = atoi(temp);
-            cpu->int_amount = x;
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).int_amount = x;
+            (*cpu).current_program_count++;
+            (*time).time++;
         break;
         case 'R':
             while (j < 25 && inst[j+1] != 't' && inst[j] != '.') {
@@ -121,44 +121,44 @@ void run_instructions(struct CPU* cpu, struct Process* proc, struct ExecState* e
                 puts("Error: file couldn't be opened.");
             } else {
                 int inst_amount = 0;
-                initialize_program(&cpu->prog);
+                initialize_program(&(*cpu).prog);
                 while ((fgets(inst, sizeof(inst), f))) {
-                    enqueue_program(&cpu->prog, inst);
+                    enqueue_program(&(*cpu).prog, inst);
                     inst_amount++;
                 }
-                cpu->prog.size = inst_amount;
+                (*cpu).prog.size = inst_amount;
                 fclose(f);
             }
 
-            free(cpu->integer_value);
-            cpu->current_program_count = 0;
-            time->time++;
+            free((*cpu).integer_value);
+            (*cpu).current_program_count = 0;
+            (*time).time++;
         break;
         case 'S':
             token_retrieve_2(inst, tk_s, token, temp, temp2, &i);
             x = atoi(temp);
             y = atoi(temp2);
-            cpu->integer_value[x] -= y;
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).integer_value[x] -= y;
+            (*cpu).current_program_count++;
+            (*time).time++;
         break;
         case 'T':
-            dequeue_PCB(pcb, proc, exec->iPCB);
+            dequeue_PCB(pcb, proc, (*exec).iPCB);
             *proc = swap_process_CPU(cpu, rs);
-            time->time++;
+            (*time).time++;
         break;
         case 'V':
             token_retrieve_2(inst, tk_s, token, temp, temp2, &i);
             x = atoi(temp);
             y = atoi(temp2);
-            cpu->integer_value[x] = y;
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).integer_value[x] = y;
+            (*cpu).current_program_count++;
+            (*time).time++;
         break;
         default:
             puts("Error: the program couldn't interpret this command.");
-            cpu->current_program_count++;
-            time->time++;
+            (*cpu).current_program_count++;
+            (*time).time++;
 
     }
 

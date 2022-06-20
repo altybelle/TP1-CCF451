@@ -5,19 +5,19 @@
 #include <string.h>
 
 void initialize_PCB(struct PCB* pcb) {
-    pcb->back = pcb->front = 0;
+    (*pcb).back = (*pcb).front = 0;
 }
 
 int is_PCB_empty(struct PCB* pcb) {
-    return (pcb->back == pcb->front);
+    return ((*pcb).back == (*pcb).front);
 }
 
 void enqueue_PCB(struct PCB* pcb, struct Process* proc) {
-    if (!((pcb->back % PROGRAM_MAX + 1) == pcb->front)) {
-        pcb->procs[pcb->back] = *proc;
-        pcb->back = pcb->back % PROGRAM_MAX + 1;
-        strcpy(proc->state, "READY");
-        printf("The process was successfully added to the PCB table. PID: %d.\n", proc->pid);
+    if (!(((*pcb).back % PROGRAM_MAX + 1) == (*pcb).front)) {
+        (*pcb).procs[(*pcb).back] = *proc;
+        (*pcb).back = (*pcb).back % PROGRAM_MAX + 1;
+        strcpy((*proc).state, "READY");
+        printf("The process was successfully added to the PCB table. PID: %d.\n", (*proc).pid);
         return;
     }
     puts("Error: The PCB table is already full.");
@@ -25,11 +25,11 @@ void enqueue_PCB(struct PCB* pcb, struct Process* proc) {
 
 int dequeue_PCB(struct PCB* pcb, struct Process* proc, int index) {
     int i;
-    if (! (is_PCB_empty(pcb) || pcb->back <= index)) {
-        *proc = pcb->procs[index];
-        pcb->back--;
-        for (i = index; i < pcb->back; i++) {
-            pcb->procs[i] = pcb->procs[i + 1];
+    if (!(is_PCB_empty(pcb) || (*pcb).back <= index)) {
+        *proc = (*pcb).procs[index];
+        (*pcb).back--;
+        for (i = index; i < (*pcb).back; i++) {
+            (*pcb).procs[i] = (*pcb).procs[i + 1];
         }
         return 1;
     }
@@ -40,9 +40,9 @@ int dequeue_PCB(struct PCB* pcb, struct Process* proc, int index) {
 void print_PCB(struct PCB* pcb) {
     int i;
     puts("=============== PCB queue ===============");
-    for (i = pcb->front; i < pcb->back; i++) {
+    for (i = (*pcb).front; i < (*pcb).back; i++) {
         printf("Process %d: \n", i);
-        print_process(&pcb->procs[i]);
+        print_process(&(*pcb).procs[i]);
         puts("=========================================");
     }
 }
