@@ -1,7 +1,6 @@
 #include "./Control.h"
-
-#include "../ProcessManager/ProcessManager.h"
 #include "../Common.h"
+#include "../ProcessManager/ProcessManager.h"
 
 #include <stdio.h>
 #include <stdlib.h>
