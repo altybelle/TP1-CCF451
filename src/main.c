@@ -7,6 +7,5 @@
 int main(int argc, char const *argv[]) {
   srand(time(NULL));
   execute_control();
-  puts("All done.");
   return 0;
 }

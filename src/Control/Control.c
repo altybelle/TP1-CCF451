@@ -12,21 +12,21 @@ int execute_control(){
     int pid;
     struct Program prog;
     Instructions inst;
-    int fd[2],fd_s[2]; 
+    int desc[2], s_desc[2]; 
     char sent[BUFFER], received[BUFFER];
     int inst_amount = 0;
     
-    if (pipe(fd) < 0) { 
-        perror("pipe");
+    if (pipe(desc) < 0) { 
+        perror("Error: Pipe error.");
         return -1; 
     }
     if ((pid = fork()) < 0){ 
-        perror("fork");
+        perror("Error: Fork error.");
         exit(1);
     }
   
     if (pid > 0) {
-        close(fd[0]);
+        close(desc[0]);
         int a = 0;
         while (a != 1 && a != 2) {
             printf("Do you wanna use file mode (1) or interactive mode (2)? R: ");
@@ -43,7 +43,7 @@ int execute_control(){
         }
         
         printf("String sent from Control %i to the Manager. Content: %s\n", getpid(), sent);
-        write(fd[1], sent, sizeof(sent) + 1);
+        write(desc[1], sent, sizeof(sent) + 1);
         exit(0);
         return 1; 
     } else {
@@ -57,8 +57,8 @@ int execute_control(){
 
         int dequeued;
 
-        if (pipe(fd_s) < 0) {
-            perror("pipe");
+        if (pipe(s_desc) < 0) {
+            perror("Error: Pipe error.");
             return -1;
         }
         initialize(&cpu, &exec, &rs, &bs, &pcb, &time);
@@ -79,9 +79,9 @@ int execute_control(){
 
         struct Process proc = create_first_process(&prog, &time, inst_amount, getpid());
 
-        close(fd[1]);
+        close(desc[1]);
 
-        read(fd[0],  received, sizeof(received));
+        read(desc[0],  received, sizeof(received));
         printf("String received from PID %i Manager and sent from Control. Content: '%s'\n\n", getpid(), received);
 
         enqueue_ready_state(&rs, &proc);
