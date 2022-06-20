@@ -4,10 +4,10 @@
 
 void print_CPU(struct CPU* cpu) {
     int i;
-    printf("=============== CPU INFO ===============");
-    printf("Program in CPU:\n");
+    puts("=============== CPU INFO ===============");
+    puts("Program in CPU:");
     for (i = 0; i < cpu->prog.size; i++)
-        printf("%s\t", cpu->prog.inst[i]);
+        printf("%s", cpu->prog.inst[i]);
     printf("\n");
     printf("Current program counter: %d\n", cpu->current_program_count);
     printf("Integer amount: %d\n", cpu->int_amount);

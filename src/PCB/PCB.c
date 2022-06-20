@@ -39,10 +39,10 @@ int dequeue_PCB(struct PCB* pcb, struct Process* proc, int index) {
 
 void print_PCB(struct PCB* pcb) {
     int i;
-    printf("=============== PCB queue ===============");
+    puts("=============== PCB queue ===============");
     for (i = pcb->front; i < pcb->back; i++) {
         printf("Process %d: \n", i);
         print_process(&pcb->procs[i]);
-        printf("=========================================\n");
+        puts("=========================================");
     }
 }

@@ -35,10 +35,10 @@ int dequeue_ready_state(struct ReadyState* rs, struct Process* proc) {
 
 void print_ready_state(struct ReadyState* rs) {
     int i;
-    printf("=============== Ready State queue ===============");
+    puts("=============== Ready State queue ===============");
     for (i = rs->front; i < rs->back; i++) {
         printf("Process %d: \n", i);
         print_process(&rs->procs[i]);
-        printf("=================================================\n");
+        puts("=================================================");
     }
 }

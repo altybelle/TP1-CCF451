@@ -14,9 +14,8 @@ void print_process(struct Process* proc) {
     if (proc->process_state.allocated_int_amount) 
         for (i = 0; i < proc->process_state.int_amount; i++)
             printf("Integer %d value: %d\n", i, proc->process_state.integer[i]);
-    printf("Program counter: %d", proc->process_state.count);
+    printf("Program counter: %d\n", proc->process_state.count);
     puts("Process' program: ");
     for (i = 0; i < proc->process_state.size; i++)
-        printf("\t%s", proc->process_state.prog[i]);
-    printf("\n");
+        printf("%s", proc->process_state.prog[i]);
 }

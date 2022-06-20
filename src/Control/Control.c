@@ -30,7 +30,7 @@ int execute_control(){
         close(fd[0]);
         int a = 0;
         while (a != 1 && a != 2) {
-            printf("Do you wanna use file mode (1) or interactive mode (2)? R:");
+            printf("Do you wanna use file mode (1) or interactive mode (2)? R: ");
             scanf("%d", &a);
             if (a != 1 && a != 2) {
                 printf("\nError: Invalid input!\n");
@@ -67,13 +67,13 @@ int execute_control(){
         f = fopen("./FILES/INPUT/PROG.txt", "r");
 
         if (!f) {
-            printf("Error: coudln't open PROG.txt file.\n");
+            puts("Error: coudln't open PROG.txt file.");
         } else {
             while((fgets(inst, sizeof(inst), f))){
                     enqueue_program(&prog, inst);
                     inst_amount++;
                 }
-        fclose(f);
+            fclose(f);
         }
 
         prog.size = inst_amount;
@@ -97,7 +97,7 @@ int execute_control(){
                 case 'L':
                     dequeued = dequeue_blocked_state(&bs, &u_proc);
                     if (dequeued){
-                    enqueue_ready_state(&rs, &u_proc);
+                        enqueue_ready_state(&rs, &u_proc);
                     }
                     break;
                 case 'M':
@@ -119,12 +119,12 @@ void read_terminal(char *sent){
     int i = 0;
     char command;
     printf("Insert a command: ");
-    do{
+    do {
         scanf("%c",&command);
         sent[i] = command;
         strcat(sent, " ");
         i += 2;
-    }while (command != 'M');
+    } while (command != 'M');
 }
 
 int read_file(char *sent){
