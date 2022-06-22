@@ -29,12 +29,12 @@ void token_retrieve_2(Instructions inst, const char* tk_s, char* token, char* te
 
 void run_instructions(struct CPU* cpu, struct Process* proc, struct ExecState* exec, 
                      struct ReadyState* rs, struct BlockedState* bs, struct PCB* pcb, struct Time* time) {
-    FILE *f;
-    char *token;
+    FILE *f = NULL;
+    char *token = NULL;
     char command;
     char path[40];
     int i, j, x, y;
-    char *temp, *temp2;
+    char *temp = NULL, *temp2 = NULL;
     const char tk_s[2] = " ";
     char new_file[20] = "";
     Instructions inst;

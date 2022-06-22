@@ -17,5 +17,4 @@ void print_CPU(struct CPU* cpu) {
     }
     printf("Available time slice: %d\n", (*cpu).time_slice);
     printf("Used time slices: %d\n", (*cpu).used_time_slices);
-    puts("=========================================");
 }

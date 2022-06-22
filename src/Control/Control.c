@@ -81,7 +81,7 @@ int execute_control(){
 
     close(desc[1]);
     read(desc[0],  received, sizeof(received));
-    printf("String received from PID %i Manager and sent from Control. Content: '%s'\n\n", getpid(), received);
+    printf("String received from PID %i Manager and sent from Control. Content: '%s'\n", getpid(), received);
     enqueue_ready_state(&rs, &proc);
     enqueue_PCB(&pcb, &proc);
 

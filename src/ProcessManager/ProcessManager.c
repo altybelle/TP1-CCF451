@@ -50,7 +50,6 @@ struct Process create_first_process(struct Program *prog, struct Time *time, int
 }
 
 struct Process create_process(struct Process *parent_proc, struct Time *time, int instruction_number) {
-    int i;
     struct Process proc;
 
     proc.pid = rand() % 10000;
@@ -206,5 +205,4 @@ void print_whole_system(struct CPU* cpu, struct ReadyState* rs, struct BlockedSt
     print_ready_state(rs);
     print_blocked_state(bs);
     print_PCB(pcb);
-    puts("===========================================");
 }
