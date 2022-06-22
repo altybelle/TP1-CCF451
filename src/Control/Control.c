@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 int execute_control(){
-    FILE *f; // ponteiro para o arquivo de entrada
+    FILE *f = NULL; // ponteiro para o arquivo de entrada
     int pid; // id do processo
     struct Program prog; // programa que ira receber a entrada
     Instructions inst; // variavel que recebera as instruções do programa
@@ -103,7 +103,6 @@ int execute_control(){
                 dequeued = dequeue_blocked_state(&bs, &u_proc);
                 if (dequeued)
                     enqueue_ready_state(&rs, &u_proc);
-                
                 break;
             case 'M':
                 print_average_cycle_time(&time);

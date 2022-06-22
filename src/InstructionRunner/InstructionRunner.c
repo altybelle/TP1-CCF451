@@ -34,7 +34,7 @@ void run_instructions(struct CPU* cpu, struct Process* proc, struct ExecState* e
     char command;
     char path[40];
     int i, j, x, y;
-    char *temp = NULL, *temp2 = NULL;
+    char temp[BUFFER], temp2[BUFFER];
     const char tk_s[2] = " ";
     char new_file[20] = "";
     Instructions inst;
