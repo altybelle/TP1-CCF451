@@ -169,7 +169,7 @@ void execute2(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, st
 
     run_instructions(cpu, proc, exec, rs, bs, pcb, time); // executa as instrucoes do programa
 
-    if ((*proc).priority >= 0 && (*proc).priority <= 3) {
+    if ((*proc).priority < 3  && (*proc).priority >= 0) {
         (*cpu).used_time_slices += (int)pow(2, (*proc).priority); // somando a fracao de tempo utilizada na CPU como sendo 2 elevado a prioridade
     } else {
         puts("Error: Failed to update used time slice data.");
@@ -189,7 +189,7 @@ void execute2(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, st
     (*pcb).procs[(*exec).iPCB] = *proc;
 
     if ((*cpu).used_time_slices >= (*cpu).time_slice) { // verificando se usou um tempo maior ou igual a fatia de tempo definida e incrementando sua prioridade
-        if ((*proc).priority > 0 && (*proc).priority <= 3) {
+        if ((*proc).priority < 3 && (*proc).priority >= 0) {
             printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, (*pcb).procs[(*exec).iPCB].priority + 1);
             (*proc).priority++;
             (*pcb).procs[(*exec).iPCB].priority++;
@@ -197,7 +197,7 @@ void execute2(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, st
         enqueue_blocked_state(bs, proc);
         *proc = swap_process_CPU(cpu,rs);
     } else if ((*cpu).used_time_slices < (*cpu).time_slice) {  // verificando se usou um tempo menor que a fatia de tempo definida e decrementando sua prioridade
-        if ((*proc).priority > 0 && (*proc).priority <= 3){
+        if ((*proc).priority < 3 && (*proc).priority >= 0 ){
             printf("Priority from PID %d changed from %d to %d.", (*proc).pid, (*proc).priority, (*pcb).procs[(*exec).iPCB].priority + 1);
             (*proc).priority--;
             (*pcb).procs[(*exec).iPCB].priority--;

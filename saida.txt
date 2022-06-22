@@ -1,0 +1,172 @@
+Do you wanna use file mode (1) or interactive mode (2)? R: String sent from Control 1553 to the Manager. Content: U U U U U U U U U U U L U U U U U U U U I M 
+String received from PID 1554 Manager and sent from Control. Content: 'U U U U U U U U U U U L U U U U U U U U I M '
+
+The process was successfully added to the Ready State queue. PID: 5879.
+The process was successfully added to the PCB table. PID: 5879.
+Error: the program couldn't interpret this command.
+Error: the program couldn't interpret this command.
+The process was successfully added to the Ready State queue. PID: 8681.
+The process was successfully added to the PCB table. PID: 8681.
+The process was successfully added to the Blocked State queue. PID: 5879.
+Error: the program couldn't interpret this command.
+Error: the program couldn't interpret this command.
+Error: the program couldn't interpret this command.
+The process was successfully added to the Ready State queue. PID: 5879.
+The process was successfully added to the Ready State queue. PID: 940.
+The process was successfully added to the PCB table. PID: 940.
+The process was successfully added to the Blocked State queue. PID: 8681.
+The process was successfully added to the Ready State queue. PID: 1096.
+The process was successfully added to the PCB table. PID: 1096.
+The process was successfully added to the Blocked State queue. PID: 5879.
+=============== SYSTEM INFO ===============
+=============== CPU INFO ===============
+Program in CPU:
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+
+Current program counter: 0
+Integer amount: 0
+Available time slice: 10
+Used time slices: 0
+=========== Ready State queue ===========
+Process 4: 
+PID: 1096
+Parent PID: 5879
+CPU startup time: 17
+CPU quota time: 0
+State: READY
+Priority: 0
+Variable count: 0
+Program counter: 0
+Process' program: 
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+S 0 11
+V 1 30
+========== Blocked State queue ==========
+Process 1: 
+PID: 8681
+Parent PID: 5879
+CPU startup time: 6
+CPU quota time: 8
+State: READY
+Priority: 0
+Variable count: 8
+Program counter: 8
+Process' program: 
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+S 0 11
+Process 2: 
+PID: 5879
+Parent PID: 1554
+CPU startup time: 0
+CPU quota time: 1
+State: READY
+Priority: 0
+Variable count: 8
+Program counter: 8
+Process' program: 
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+S 0 11
+=============== PCB queue ===============
+Process 0: 
+PID: 5879
+Parent PID: 1554
+CPU startup time: 0
+CPU quota time: 2
+State: BLOCKED
+Priority: 0
+Variable count: 9
+Program counter: 9
+Process' program: 
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+S 0 11
+=========================================
+Process 1: 
+PID: 8681
+Parent PID: 5879
+CPU startup time: 6
+CPU quota time: 0
+State: READY
+Priority: 0
+Variable count: 0
+Program counter: 0
+Process' program: 
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+S 0 11
+V 1 30
+=========================================
+Process 2: 
+PID: 940
+Parent PID: 8681
+CPU startup time: 15
+CPU quota time: 0
+State: READY
+Priority: 0
+Variable count: 0
+Program counter: 0
+Process' program: 
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+S 0 11
+=========================================
+Process 3: 
+PID: 1096
+Parent PID: 5879
+CPU startup time: 17
+CPU quota time: 0
+State: READY
+Priority: 0
+Variable count: 0
+Program counter: 0
+Process' program: 
+N 3
+D 0
+D 1
+D 2
+F 7
+B
+A 0 10
+S 0 11
+V 1 30
+=========================================
+The average cycle time was 4.00.
