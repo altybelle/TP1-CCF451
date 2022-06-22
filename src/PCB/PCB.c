@@ -12,8 +12,9 @@ int is_PCB_empty(struct PCB* pcb) {
     return ((*pcb).back == (*pcb).front);
 }
 
+// enfileira o PCB
 void enqueue_PCB(struct PCB* pcb, struct Process* proc) {
-    if (!(((*pcb).back % PROGRAM_MAX + 1) == (*pcb).front)) {
+    if (!(((*pcb).back % PROGRAM_MAX + 1) == (*pcb).front)) { // checa se a tabela nao esta cheia e enfileira mais um processo caso nao esteja
         (*pcb).procs[(*pcb).back] = *proc;
         (*pcb).back = (*pcb).back % PROGRAM_MAX + 1;
         strcpy((*proc).state, "READY");
@@ -23,9 +24,10 @@ void enqueue_PCB(struct PCB* pcb, struct Process* proc) {
     puts("Error: The PCB table is already full.");
 }
 
+// desenfileira um processo da PCB
 int dequeue_PCB(struct PCB* pcb, struct Process* proc, int index) {
     int i;
-    if (!(is_PCB_empty(pcb) || (*pcb).back <= index)) {
+    if (!(is_PCB_empty(pcb) || (*pcb).back <= index)) { // checa se a tabela nao esta vazia e desenfileira mais um processo caso nao esteja
         *proc = (*pcb).procs[index];
         (*pcb).back--;
         for (i = index; i < (*pcb).back; i++) {

@@ -13,7 +13,7 @@ int is_ready_state_empty(struct ReadyState* rs) {
 }
 
 void enqueue_ready_state(struct ReadyState* rs, struct Process* proc) {
-    if (!(((*rs).back % PROGRAM_MAX + 1) == (*rs).front)) {
+    if (!(((*rs).back % PROGRAM_MAX + 1) == (*rs).front)) { // checa se esta cheio e enfileira caso nao
         (*rs).procs[(*rs).back] = *proc;
         (*rs).back = (*rs).back % PROGRAM_MAX + 1;
         strcpy((*proc).state, "READY");
@@ -24,7 +24,7 @@ void enqueue_ready_state(struct ReadyState* rs, struct Process* proc) {
 }
 
 int dequeue_ready_state(struct ReadyState* rs, struct Process* proc) {
-    if (!is_ready_state_empty(rs)) {
+    if (!is_ready_state_empty(rs)) { // checa se esta vazio e desenfileira caso nao
         *proc = (*rs).procs[(*rs).front];
         (*rs).front = (*rs).front % PROGRAM_MAX + 1;
         return 1;

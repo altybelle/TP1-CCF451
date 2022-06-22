@@ -13,7 +13,7 @@ int is_blocked_state_empty(struct BlockedState* bs) {
 }
 
 void enqueue_blocked_state(struct BlockedState* bs, struct Process* proc) {
-    if (!(((*bs).back % PROGRAM_MAX + 1) == (*bs).front)) {
+    if (!(((*bs).back % PROGRAM_MAX + 1) == (*bs).front)) { // checa se esta cheio e enfileira caso nao
         (*bs).procs[(*bs).back] = *proc;
         (*bs).back = (*bs).back % PROGRAM_MAX + 1;
         strcpy((*proc).state, "BLOCKED");
@@ -24,7 +24,7 @@ void enqueue_blocked_state(struct BlockedState* bs, struct Process* proc) {
 }
 
 int dequeue_blocked_state(struct BlockedState* bs, struct Process* proc) {
-    if (!is_blocked_state_empty(bs)) {
+    if (!is_blocked_state_empty(bs)) { // checa se esta vazio e denfileira caso nao
         *proc = (*bs).procs[(*bs).front];
         (*bs).front = (*bs).front % PROGRAM_MAX + 1;
         return 1;
