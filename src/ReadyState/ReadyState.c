@@ -39,5 +39,7 @@ void print_ready_state(struct ReadyState* rs) {
     for (i = (*rs).front; i < (*rs).back; i++) {
         printf("Process %d: \n", i);
         print_process(&(*rs).procs[i]);
+        if (i < (*rs).back - 1)
+            puts("=========================================");
     }
 }

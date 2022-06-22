@@ -157,7 +157,6 @@ void run_instructions(struct CPU* cpu, struct Process* proc, struct ExecState* e
             (*time).time++; // incrementa o tempo
         break;
         default:
-            puts("Error: the program couldn't interpret this command.");
             (*cpu).current_program_count++; // incrementa o contador de programa
             (*time).time++; // incrementa o tempo
 

@@ -131,7 +131,7 @@ void execute(struct CPU* cpu, struct ExecState* exec, struct ReadyState* rs, str
 
     run_instructions(cpu, proc, exec, rs, bs, pcb, time); // executa as instrucoes do programa
 
-    if ((*proc).priority >= 0 && (*proc).priority <= 3) {
+    if ((*proc).priority < 3 && (*proc).priority >= 0) {
         (*cpu).used_time_slices += (int)pow(2, (*proc).priority); // somando a fracao de tempo utilizada na CPU como sendo 2 elevado a prioridade
     } else {
         puts("Error: Failed to update used time slice data.");

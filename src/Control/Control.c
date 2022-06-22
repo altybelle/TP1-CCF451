@@ -88,7 +88,7 @@ int execute_control(){
     close(desc[1]); // fechando a entrada do pipe
     read(desc[0],  received, sizeof(received)); // leitura do pipe
 
-    printf("String received from PID %i Manager and sent from Control. Content: '%s'\n\n", getpid(), received);
+    printf("String received from PID %i Manager and sent from Control. Content: %s\n", getpid(), received);
 
     enqueue_ready_state(&rs, &proc); // enfileirando o primeiro programa como pronto
     enqueue_PCB(&pcb, &proc); // enfileirando em PCB

@@ -39,5 +39,7 @@ void print_blocked_state(struct BlockedState* bs) {
     for (i = (*bs).front; i < (*bs).back; i++) {
         printf("Process %d: \n", i);
         print_process(&(*bs).procs[i]);
+        if (i < (*bs).back - 1)
+            puts("=========================================");
     }
 }
