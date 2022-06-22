@@ -1,23 +1,23 @@
-Do you wanna use file mode (1) or interactive mode (2)? R: String sent from Control 1553 to the Manager. Content: U U U U U U U U U U U L U U U U U U U U I M 
-String received from PID 1554 Manager and sent from Control. Content: 'U U U U U U U U U U U L U U U U U U U U I M '
+Do you wanna use file mode (1) or interactive mode (2)? R: String sent from Control 1708 to the Manager. Content: U U U U U U U U U U U L U U U U U U U U I M 
+String received from PID 1709 Manager and sent from Control. Content: 'U U U U U U U U U U U L U U U U U U U U I M '
 
-The process was successfully added to the Ready State queue. PID: 5879.
-The process was successfully added to the PCB table. PID: 5879.
+The process was successfully added to the Ready State queue. PID: 9811.
+The process was successfully added to the PCB table. PID: 9811.
 Error: the program couldn't interpret this command.
 Error: the program couldn't interpret this command.
-The process was successfully added to the Ready State queue. PID: 8681.
-The process was successfully added to the PCB table. PID: 8681.
-The process was successfully added to the Blocked State queue. PID: 5879.
+The process was successfully added to the Ready State queue. PID: 637.
+The process was successfully added to the PCB table. PID: 637.
+The process was successfully added to the Blocked State queue. PID: 9811.
 Error: the program couldn't interpret this command.
 Error: the program couldn't interpret this command.
 Error: the program couldn't interpret this command.
-The process was successfully added to the Ready State queue. PID: 5879.
-The process was successfully added to the Ready State queue. PID: 940.
-The process was successfully added to the PCB table. PID: 940.
-The process was successfully added to the Blocked State queue. PID: 8681.
-The process was successfully added to the Ready State queue. PID: 1096.
-The process was successfully added to the PCB table. PID: 1096.
-The process was successfully added to the Blocked State queue. PID: 5879.
+The process was successfully added to the Ready State queue. PID: 9811.
+The process was successfully added to the Ready State queue. PID: 788.
+The process was successfully added to the PCB table. PID: 788.
+The process was successfully added to the Blocked State queue. PID: 637.
+The process was successfully added to the Ready State queue. PID: 3256.
+The process was successfully added to the PCB table. PID: 3256.
+The process was successfully added to the Blocked State queue. PID: 9811.
 =============== SYSTEM INFO ===============
 =============== CPU INFO ===============
 Program in CPU:
@@ -29,20 +29,28 @@ F 7
 B
 A 0 10
 
-Current program counter: 0
-Integer amount: 0
+Current program counter: 8
+Integer amount: 8
+Integer 0 value: 0
+Integer 1 value: 0
+Integer 2 value: 0
+Integer 3 value: 0
+Integer 4 value: 0
+Integer 5 value: 0
+Integer 6 value: 0
+Integer 7 value: 0
 Available time slice: 10
 Used time slices: 0
 =========== Ready State queue ===========
 Process 4: 
-PID: 1096
-Parent PID: 5879
+PID: 3256
+Parent PID: 9811
 CPU startup time: 17
 CPU quota time: 0
 State: READY
 Priority: 0
 Variable count: 0
-Program counter: 0
+Program counter: 8
 Process' program: 
 N 3
 D 0
@@ -55,13 +63,21 @@ S 0 11
 V 1 30
 ========== Blocked State queue ==========
 Process 1: 
-PID: 8681
-Parent PID: 5879
+PID: 637
+Parent PID: 9811
 CPU startup time: 6
 CPU quota time: 8
 State: READY
 Priority: 0
 Variable count: 8
+Integer 0 value: 0
+Integer 1 value: 0
+Integer 2 value: 0
+Integer 3 value: 0
+Integer 4 value: 0
+Integer 5 value: 0
+Integer 6 value: 49
+Integer 7 value: 0
 Program counter: 8
 Process' program: 
 N 3
@@ -73,13 +89,13 @@ B
 A 0 10
 S 0 11
 Process 2: 
-PID: 5879
-Parent PID: 1554
+PID: 9811
+Parent PID: 1709
 CPU startup time: 0
 CPU quota time: 1
 State: READY
 Priority: 0
-Variable count: 8
+Variable count: 0
 Program counter: 8
 Process' program: 
 N 3
@@ -92,13 +108,13 @@ A 0 10
 S 0 11
 =============== PCB queue ===============
 Process 0: 
-PID: 5879
-Parent PID: 1554
+PID: 9811
+Parent PID: 1709
 CPU startup time: 0
 CPU quota time: 2
 State: BLOCKED
 Priority: 0
-Variable count: 9
+Variable count: 0
 Program counter: 9
 Process' program: 
 N 3
@@ -111,8 +127,8 @@ A 0 10
 S 0 11
 =========================================
 Process 1: 
-PID: 8681
-Parent PID: 5879
+PID: 637
+Parent PID: 9811
 CPU startup time: 6
 CPU quota time: 0
 State: READY
@@ -131,14 +147,22 @@ S 0 11
 V 1 30
 =========================================
 Process 2: 
-PID: 940
-Parent PID: 8681
+PID: 788
+Parent PID: 637
 CPU startup time: 15
 CPU quota time: 0
 State: READY
 Priority: 0
-Variable count: 0
-Program counter: 0
+Variable count: 8
+Integer 0 value: 0
+Integer 1 value: 0
+Integer 2 value: 0
+Integer 3 value: 0
+Integer 4 value: 0
+Integer 5 value: 0
+Integer 6 value: 0
+Integer 7 value: 0
+Program counter: 8
 Process' program: 
 N 3
 D 0
@@ -150,14 +174,14 @@ A 0 10
 S 0 11
 =========================================
 Process 3: 
-PID: 1096
-Parent PID: 5879
+PID: 3256
+Parent PID: 9811
 CPU startup time: 17
 CPU quota time: 0
 State: READY
 Priority: 0
 Variable count: 0
-Program counter: 0
+Program counter: 8
 Process' program: 
 N 3
 D 0

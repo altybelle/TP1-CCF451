@@ -10,7 +10,7 @@ void print_process(struct Process* proc) {
     printf("CPU quota time: %d\n", (*proc).cpu_quota);
     printf("State: %s\n", (*proc).state);
     printf("Priority: %d\n", (*proc).priority);
-    printf("Variable count: %d\n", (*proc).process_state.count);
+    printf("Variable count: %d\n", (*proc).process_state.int_amount);
     if ((*proc).process_state.allocated_int_amount) 
         for (i = 0; i < (*proc).process_state.int_amount; i++)
             printf("Integer %d value: %d\n", i, (*proc).process_state.integer[i]);
